@@ -12,12 +12,16 @@ import Engine.system.RedSoundSystem;
 import Engine.system.RedWindow;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
@@ -157,6 +161,12 @@ public class RedGame {
 
     public final void start() {
         state.create();
+		
+		try {
+			RedG.fontPixie = Font.createFont(Font.PLAIN, RedText.class.getResourceAsStream("/Engine/system/data/pixie.ttf"));
+		} catch (FontFormatException | IOException ex) {
+			Logger.getLogger(RedGame.class.getName()).log(Level.SEVERE, null, ex);
+		}
 
         _windowList[0].setVisible(true);
         lastTime = System.currentTimeMillis();

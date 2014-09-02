@@ -8,6 +8,7 @@ package Engine;
 
 import Engine.system.RedKeyboard;
 import Engine.system.RedMouse;
+import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 
 /**
@@ -45,6 +46,8 @@ public class RedG {
 	 * Reference to <code>RedMouse</code>.
 	 */
 	public static RedMouse mouse = new RedMouse();
+	
+	public static Font fontPixie;
 
 	/**
 	 * Function for switching to another state.
