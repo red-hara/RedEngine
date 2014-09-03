@@ -26,7 +26,7 @@ public class RedState extends RedGroup {
 	public double width;
 	public double height;
 	public double angle;
-	public RedPoint scrollFactor = new RedPoint(1, 1);
+	public RedPoint scrollFactor = new RedPoint(0, 0);
 	public double zoom = 0;
 	public int bgColor = 0x0;
 	public RedCanvas stateCanvas;
