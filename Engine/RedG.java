@@ -304,7 +304,7 @@ public class RedG {
 					RedGame.getWindow().getTitle(),
 					true,
 					RedGame.getWindow().getBackground().getRGB() + 0x1000000 * RedGame.getWindow().getBackground().getAlpha(),
-					RedGame.getWindow().displyasZoom);
+					RedGame.getWindow().displayZoom);
 		}
 		RedGame.getWindow().requestFocus();
 	}
