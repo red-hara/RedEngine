@@ -11,7 +11,7 @@ package Engine;
 /**
  * Just a point with two coordinates.
  *
- * @author red__hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedPoint
 {

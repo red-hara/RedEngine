@@ -13,7 +13,7 @@ import java.awt.Graphics;
 
 /**
  *
- * @author hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedPolygon extends RedObject {
     

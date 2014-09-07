@@ -14,7 +14,7 @@ import java.awt.GraphicsEnvironment;
 /**
  * Useful class for Global usage.
  *
- * @author red__hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedG {
 

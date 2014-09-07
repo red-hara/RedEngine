@@ -13,7 +13,7 @@ import java.awt.event.KeyEvent;
 
 /**
  *
- * @author hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedKeyboard extends KeyAdapter {
 

@@ -11,7 +11,7 @@ package Engine;
 /**
  * Rectangle with coordinates, width and height.
  *
- * @author red__hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedRect {
     /**

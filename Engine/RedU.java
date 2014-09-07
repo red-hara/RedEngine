@@ -11,7 +11,7 @@ package Engine;
 /**
  * Class for random useful stuff.
  *
- * @author red__hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedU {
 

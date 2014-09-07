@@ -17,7 +17,7 @@ import java.awt.image.BufferedImage;
 /**
  * Class extends <code>RedObject</code>. Has image and animation.
  *
- * @author red__hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedSprite extends RedObject {
 

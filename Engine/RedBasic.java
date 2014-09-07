@@ -13,7 +13,7 @@ package Engine;
  * <code>RedGrop</code>,
  * <code>RedObject</code>. Controls existence and visibility.
  *
- * @author red__hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedBasic extends Object{
 

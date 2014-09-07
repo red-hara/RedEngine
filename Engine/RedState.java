@@ -17,7 +17,7 @@ import java.awt.image.BufferedImage;
  * I suggest you use this code only for a limited canvas works. For full screen use
  * <code>RedGroup</code> instead.
  *
- * @author hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedState extends RedGroup {
 

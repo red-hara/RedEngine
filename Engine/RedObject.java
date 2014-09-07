@@ -12,7 +12,7 @@ package Engine;
  * Class extends
  * <code>RedBasic</code>. Has movement system.
  *
- * @author red__hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedObject extends RedBasic {
 

@@ -14,7 +14,7 @@ import java.io.IOException;
 
 /**
  *
- * @author hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedSound extends RedObject {
 

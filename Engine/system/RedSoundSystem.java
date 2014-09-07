@@ -21,7 +21,7 @@ import javax.sound.sampled.SourceDataLine;
 
 /**
  *
- * @author hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedSoundSystem extends RedBasic {
 

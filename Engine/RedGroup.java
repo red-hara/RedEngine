@@ -13,7 +13,7 @@ import java.util.LinkedList;
 /**
  * Class for working with group of <code>RedBasic</code>.
  *
- * @author red__hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedGroup extends RedBasic {
 

@@ -17,7 +17,7 @@ import java.awt.event.MouseEvent;
 
 /**
  * 
- * @author hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 
 //  ______

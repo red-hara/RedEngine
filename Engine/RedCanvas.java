@@ -10,7 +10,7 @@ package Engine;
 
 /**
  *
- * @author hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedCanvas extends RedImage {
     

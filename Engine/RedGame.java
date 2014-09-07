@@ -26,7 +26,7 @@ import javax.swing.Timer;
 /**
  * Basic game class,handles update and etc.
  *
- * @author red__hara
+ * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class RedGame {
 
