@@ -102,20 +102,17 @@ public class RedTilemap extends RedObject {
 	@Override
 	public void draw(RedCanvas Canvas) {
 		if (visible) {
-			RedSprite virtualSprite = new RedSprite(0, 0, 0, 0);
-
+			if(dirty) {
+				for( RedSprite tile : tiles ) {
+					tile.dirty = true;
+				}
+				dirty = false;
+			}
 			for (int X = 0; X < data.length; X++) {
 				for (int Y = 0; Y < data[0].length; Y++) {
-					virtualSprite.teleport(x + X * tileWidth, y + Y * tileHeight);
-					virtualSprite.finalFrame = tiles[data[X][Y]].currentFrame;
-					if (dirty) {
-						virtualSprite.updateFrame();
-					}
-					virtualSprite.draw(Canvas);
+					tiles[data[X][Y]].teleport(x + X * tileWidth, y + Y * tileHeight);
+					tiles[data[X][Y]].draw(Canvas);
 				}
-			}
-			if (dirty) {
-				dirty = false;
 			}
 		}
 	}

@@ -75,44 +75,53 @@ public class RedSprite extends RedObject {
 			int h = finalFrame.getHeight();
 			int newW = (int) Math.floor(w * cos + h * sin);
 			int newH = (int) Math.floor(h * cos + w * sin);
-			GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment()
-					.getDefaultScreenDevice()
-					.getDefaultConfiguration();
-
-			BufferedImage result = gc.createCompatibleImage(newW, newH, Transparency.TRANSLUCENT);
-			Graphics2D g = result.createGraphics();
-			g.translate((newW - w) / 2, (newH - h) / 2);
-			g.rotate(angle, w / 2, h / 2);
-			g.drawRenderedImage(finalFrame, null);
-			g.dispose();
 
 			RedPoint leftUpperCorner = new RedPoint((int) (Math.floor((x - RedG.screen.x * scrollFactor.x + offset.x + Canvas.offset.x + canvasDelta.x - (newW - w) / 2)) * ((zoom == 0) ? Canvas.zoom : zoom)),
 					(int) (Math.floor((y - RedG.screen.y * scrollFactor.y + offset.y + Canvas.offset.y + canvasDelta.y - (newH - h) / 2)) * ((zoom == 0) ? Canvas.zoom : zoom)));
-			RedPoint size = new RedPoint((int) (Math.floor(result.getWidth() * ((zoom == 0) ? Canvas.zoom : zoom))),
-					(int) (Math.floor(result.getHeight() * ((zoom == 0) ? Canvas.zoom : zoom))));
+			RedPoint size = new RedPoint((int) (Math.floor(newW * ((zoom == 0) ? Canvas.zoom : zoom))),
+					(int) (Math.floor(newH * ((zoom == 0) ? Canvas.zoom : zoom))));
 
-			Canvas.getGraphics().drawImage(result,
-					(int) (leftUpperCorner.x + size.x / 2 - size.x / 2 * displayZoom),
-					(int) (leftUpperCorner.y + size.y / 2 - size.y / 2 * displayZoom),
-					(int) (size.x * displayZoom),
-					(int) (size.y * displayZoom),
-					null);
-			if (RedGame.debug) {
-				Graphics debugGraphics = Canvas.getGraphics();
-				debugGraphics.setColor(new Color(0x80ff0000, true));
-				debugGraphics.drawRect(
+			if (leftUpperCorner.x < Canvas.width
+					&& leftUpperCorner.y < Canvas.height
+					&& leftUpperCorner.x + size.x > 0
+					&& leftUpperCorner.y + size.y > 0 )
+			{	
+				
+				GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment()
+						.getDefaultScreenDevice()
+						.getDefaultConfiguration();
+
+				BufferedImage result = gc.createCompatibleImage(newW, newH, Transparency.TRANSLUCENT);
+				Graphics2D g = result.createGraphics();
+				g.translate((newW - w) / 2, (newH - h) / 2);
+				g.rotate(angle, w / 2, h / 2);
+				g.drawRenderedImage(finalFrame, null);
+				g.dispose();
+
+				Canvas.getGraphics().drawImage(result,
 						(int) (leftUpperCorner.x + size.x / 2 - size.x / 2 * displayZoom),
 						(int) (leftUpperCorner.y + size.y / 2 - size.y / 2 * displayZoom),
 						(int) (size.x * displayZoom),
-						(int) (size.y * displayZoom)
-				);
-				debugGraphics.setColor(new Color(0x8000ff00, true));
-				debugGraphics.drawRect(
-						(int) (Math.floor((x - RedG.screen.x * scrollFactor.x))),
-						(int) (Math.floor((y - RedG.screen.y * scrollFactor.y))),
-						(int) (Math.floor(width * Canvas.zoom + 0.5)),
-						(int) (Math.floor(height * Canvas.zoom + 0.5))
-				);
+						(int) (size.y * displayZoom),
+						null);
+				if (RedGame.debug) {
+					Graphics debugGraphics = Canvas.getGraphics();
+					debugGraphics.setColor(new Color(0x80ff0000, true));
+					debugGraphics.drawRect(
+							(int) (leftUpperCorner.x + size.x / 2 - size.x / 2 * displayZoom),
+							(int) (leftUpperCorner.y + size.y / 2 - size.y / 2 * displayZoom),
+							(int) (size.x * displayZoom),
+							(int) (size.y * displayZoom)
+					);
+					debugGraphics.setColor(new Color(0x8000ff00, true));
+					debugGraphics.drawRect(
+							(int) (Math.floor((x - RedG.screen.x * scrollFactor.x))),
+							(int) (Math.floor((y - RedG.screen.y * scrollFactor.y))),
+							(int) (Math.floor(width * Canvas.zoom + 0.5)),
+							(int) (Math.floor(height * Canvas.zoom + 0.5))
+					);
+
+				}
 			}
 		}
 	}
