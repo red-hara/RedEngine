@@ -44,7 +44,7 @@ public class RedTilemap extends RedObject {
 				for (int X = 0; X < TilesImage.width / TileWidth; X++) {
 
 					tiles[(int) (Y * TilesImage.height / TileHeight + X)] = new RedSprite(0, 0, TileWidth, TileHeight);
-					tiles[(int) (Y * TilesImage.height / TileHeight + X)].loadImage((RedImage) TilesImage.getSubimage(X * (int) TileWidth, Y * (int) TileHeight, (int) TileWidth, (int) TileHeight), (int) TileWidth, (int) TileHeight);
+					tiles[(int) (Y * TilesImage.height / TileHeight + X)].loadImage(TilesImage.getSubImage(X * (int) TileWidth, Y * (int) TileHeight, (int) TileWidth, (int) TileHeight), (int) TileWidth, (int) TileHeight);
 				}
 			}
 		} else {
@@ -88,7 +88,7 @@ public class RedTilemap extends RedObject {
 				for (int X = 0; X < TilesImage.width / TileWidth; X++) {
 
 					tiles[(int) (Y * TilesImage.height / TileHeight + X)] = new RedSprite(0, 0, TileWidth, TileHeight);
-					tiles[(int) (Y * TilesImage.height / TileHeight + X)].loadImage((RedImage) TilesImage.getSubimage(X * (int) TileWidth, Y * (int) TileHeight, (int) TileWidth, (int) TileHeight), (int) TileWidth, (int) TileHeight);
+					tiles[(int) (Y * TilesImage.height / TileHeight + X)].loadImage(TilesImage.getSubImage(X * (int) TileWidth, Y * (int) TileHeight, (int) TileWidth, (int) TileHeight), (int) TileWidth, (int) TileHeight);
 				}
 			}
 		} else {
