@@ -143,6 +143,12 @@ public class RedGame {
 		height = Height;
 
 		state = InitialState;
+		
+		try {
+			RedG.fontPixie = Font.createFont(Font.PLAIN, RedText.class.getResourceAsStream("/Engine/system/data/pixie.ttf"));
+		} catch (FontFormatException | IOException ex) {
+			Logger.getLogger(RedGame.class.getName()).log(Level.SEVERE, null, ex);
+		}
 
 		_windowList = new RedWindow[1];
 		_windowList[0] = new RedWindow((int) (width), (int) (height), Zoom, Title, Decorated, WindowColor, DisplayZoom);
@@ -152,12 +158,6 @@ public class RedGame {
 		updateTimer = new Timer(UpdateRate, updateTask);
 		drawTimer = new Timer(DrawRate, drawTask);
 		setWindowIcon("/Engine/system/data/RedIcon.png");
-
-		try {
-			RedG.fontPixie = Font.createFont(Font.PLAIN, RedText.class.getResourceAsStream("/Engine/system/data/pixie.ttf"));
-		} catch (FontFormatException | IOException ex) {
-			Logger.getLogger(RedGame.class.getName()).log(Level.SEVERE, null, ex);
-		}
 
 		sound = new RedSoundSystem();
 		sound.start();
