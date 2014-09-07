@@ -51,7 +51,7 @@ public class RedImage extends BufferedImage {
 			System.err.println(ex + "\nat " + ImagePath);
 		}
 
-		return result;
+		return new RedImage(result);
 	}
 
 	;
