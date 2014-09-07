@@ -26,6 +26,7 @@ public class RedText extends RedObject {
 	public int shadow = 0;
 	public RedPoint offset;
 	public RedPoint scrollFactor;
+	public RedPoint shadowOffset;
 	public double zoom = 0;
 	public double widhInPieces = 8;
 	public boolean centered = false;
@@ -41,6 +42,7 @@ public class RedText extends RedObject {
 
 		offset = new RedPoint(0, 0);
 		scrollFactor = new RedPoint(1, 1);
+		shadowOffset = new RedPoint(1, 1);
 	}
 
 	public RedText(double X, double Y, String Text) {
@@ -54,6 +56,7 @@ public class RedText extends RedObject {
 
 		offset = new RedPoint(0, 0);
 		scrollFactor = new RedPoint(1, 1);
+		shadowOffset = new RedPoint(1, 1);
 	}
 
 	/**
@@ -80,8 +83,8 @@ public class RedText extends RedObject {
 					lineY += (graphics.getFontMetrics().getHeight() + offset.y * ((zoom == 0) ? Canvas.zoom : zoom));
 					graphics.setColor(new Color(shadow, true));
 					graphics.drawString(line,
-							(int) Math.floor(((x - centeredOffset + Canvas.offset.x - RedG.screen.x * scrollFactor.x) * ((zoom == 0) ? Canvas.zoom : zoom) - font.getSize() * (int) ((zoom == 0) ? Canvas.zoom : zoom) / widhInPieces)),
-							(int) Math.floor((((y - RedG.screen.y * scrollFactor.y + Canvas.offset.y) * ((zoom == 0) ? Canvas.zoom : zoom)) + font.getSize() * (int) ((zoom == 0) ? Canvas.zoom : zoom) / widhInPieces)) + lineY);
+							(int) Math.floor(((x - centeredOffset + Canvas.offset.x - RedG.screen.x * scrollFactor.x) * ((zoom == 0) ? Canvas.zoom : zoom) + shadowOffset.x * font.getSize() * (int) ((zoom == 0) ? Canvas.zoom : zoom) / widhInPieces)),
+							(int) Math.floor((((y - RedG.screen.y * scrollFactor.y + Canvas.offset.y) * ((zoom == 0) ? Canvas.zoom : zoom)) + shadowOffset.y * font.getSize() * (int) ((zoom == 0) ? Canvas.zoom : zoom) / widhInPieces)) + lineY);
 					graphics.setColor(new Color(color, true));
 					graphics.drawString(line,
 							(int) Math.floor((x - centeredOffset + Canvas.offset.x - RedG.screen.x * scrollFactor.x) * ((zoom == 0) ? Canvas.zoom : zoom)),
