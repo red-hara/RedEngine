@@ -10,20 +10,49 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 /**
+ * Class for displaying splash.
+ * Override <code>stateSwitch()</code> to change state (add <code>RedG.switchState()</code> for
+ * example).
  *
  * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
 public class EngineSplash extends RedGroup {
 
+	/**
+	 * Sprite to display stylish engine symbol.
+	 */
 	public RedSprite engineSymbol = new RedSprite(8, 8, 40, 35);
+	/**
+	 * Sprite to display stylish engine name.
+	 */
 	public RedSprite engineName = new RedSprite(181, 73, 72, 52);
+	/**
+	 * Counter to work with blackout.
+	 */
 	public double timer = 0;
+	/**
+	 * Duration of blackout in seconds.
+	 */
 	public double darknessDuration = 1;
+	/**
+	 * Darkness level (from 0 to 1).
+	 */
 	public double darkness = 1;
+	/**
+	 * Color of darkness in hex.
+	 */
 	public int darknessColor = 0x000000;
+	/**
+	 * Duration of splash without darkness.
+	 */
 	public double clearDuration = 3;
-	public double noiseTimer = 0;
+	/**
+	 * 
+	 */
 
+	/**
+	 * Constructor.
+	 */
 	public EngineSplash() {
 		super();
 		RedG.bgColor = 0xffcc0000;
@@ -43,12 +72,15 @@ public class EngineSplash extends RedGroup {
 		engineName.y = RedGame.height / engineName.zoom * RedGame.getWindow().canvas.zoom - engineName.height;
 	}
 
+	/**
+	 * Update of splash. Will call <code>stateSwitch</code> when <code>timer</code> is more than
+	 * <code>2 * darknessDuration + clearDuration</code>.
+	 */
 	@Override
 	public void update() {
 		super.update();
 
 		timer += RedG.elapsed;
-		noiseTimer += RedG.elapsed;
 		if (timer < darknessDuration) {
 			darkness = 1 - timer / darknessDuration;
 		}
@@ -70,6 +102,10 @@ public class EngineSplash extends RedGroup {
 
 	}
 
+	/**
+	 * Draws splash.
+	 * @param Canvas <code>RedCanvas</code> to draw on.
+	 */
 	@Override
 	public void draw(RedCanvas Canvas) {
 		super.draw(Canvas);
@@ -78,6 +114,11 @@ public class EngineSplash extends RedGroup {
 		g.fillRect(0, 0, Canvas.width, Canvas.height);
 	}
 
+	/**
+	 * Method is called when <code>timer</code> is more than <code>2 * darknessDuration +
+	 * clearDuration</code>.
+	 * Override this to switch to new state.
+	 */
 	public void stateSwitch() {
 
 	}
