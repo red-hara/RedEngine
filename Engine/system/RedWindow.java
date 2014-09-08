@@ -40,7 +40,7 @@ public class RedWindow extends JFrame {
     public double width;
     public double height;
     public double proportion;
-    public double displyasZoom;
+    public double displayZoom;
     public RedCanvas canvas;
     public boolean resizableCanvas = true;
     public JPanel panel = new JPanel() {
@@ -117,7 +117,7 @@ public class RedWindow extends JFrame {
         y = (Toolkit.getDefaultToolkit().getScreenSize().getHeight() -Height * Zoom * DisplayZoom) / 2;
         width = Width;
         height = Height;
-        displyasZoom = DisplayZoom;
+        displayZoom = DisplayZoom;
         setLocation((int) x, (int) y);
 
         proportion = width / height;
