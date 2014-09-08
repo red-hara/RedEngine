@@ -68,8 +68,8 @@ public class EngineSplash extends RedGroup {
 		} else {
 			engineSymbol.zoom = engineName.zoom = (double) RedGame.getWindow().height / RedGame.height;
 		}
-		engineName.x = RedGame.width / engineName.zoom * RedGame.getWindow().canvas.zoom - engineName.width;
-		engineName.y = RedGame.height / engineName.zoom * RedGame.getWindow().canvas.zoom - engineName.height;
+		engineName.x = RedGame.width / engineName.zoom * RedGame.getWindow().canvas.zoom * RedGame.getWindow().displayZoom - engineName.width;
+		engineName.y = RedGame.height / engineName.zoom * RedGame.getWindow().canvas.zoom * RedGame.getWindow().displayZoom - engineName.height;
 	}
 
 	/**
