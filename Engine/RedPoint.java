@@ -15,7 +15,13 @@ package Engine;
  */
 public class RedPoint
 {
+	/**
+	 * X coordinate of point.
+	 */
     public double x;
+	/**
+	 * Y coordinate of point.
+	 */
     public double y;
     
     /**
@@ -29,6 +35,10 @@ public class RedPoint
         y = Y;
     }
     
+	/**
+	 * Function to copy point data.
+	 * @return new <code>RedPoint</code> with same coordinates.
+	 */
     public RedPoint getCopy() {
         return new RedPoint(x, y);
     }
