@@ -25,7 +25,7 @@ public class RedLoad {
 		if (fileExist) {
 			loadFile = new FileInputStream(FilePath);
 		} else {
-			throw new FileNotFoundException();
+			throw new FileNotFoundException("Failed to load " + FilePath);
 		}
 	}
 
