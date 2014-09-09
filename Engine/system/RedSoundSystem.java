@@ -1,11 +1,9 @@
 /**
- * Do what you want 'cause a pirate is free, You are a pirate!
- * This work is licensed under the Creative Commons Attribution 4.0 International
- * License. To view a copy of this license, visit
- * http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative
- * Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+ * Do what you want 'cause a pirate is free, You are a pirate! This work is licensed under the
+ * Creative Commons Attribution 4.0 International License. To view a copy of this license, visit
+ * http://creativecommons.org/licenses/by/4.0/ or send a letter to Creative Commons, 171 Second
+ * Street, Suite 300, San Francisco, California, 94105, USA.
  */
-
 package Engine.system;
 
 import Engine.RedBasic;
@@ -91,17 +89,19 @@ public class RedSoundSystem extends RedBasic {
 						sourceDataLine.start();
 						pause = false;
 					}
-					soundData = new byte[BUFFER_SIZE];
-					for (int i = 0; i < soundsList.size(); i++) {
-						if (soundsList.get(i) != null) {
-							gotData = ((RedSound) soundsList.get(i)).updateSound();
+					if (!pause) {
+						soundData = new byte[BUFFER_SIZE];
+						for (int i = 0; i < soundsList.size(); i++) {
+							if (soundsList.get(i) != null) {
+								gotData = ((RedSound) soundsList.get(i)).updateSound();
 
-							for (int j = 0; j < BUFFER_SIZE; j++) {
-								soundData[j] = (byte) Math.min(((soundData[j] + gotData[j])), 255);
+								for (int j = 0; j < BUFFER_SIZE; j++) {
+									soundData[j] = (byte) Math.min(((soundData[j] + gotData[j])), 255);
+								}
 							}
 						}
+						sourceDataLine.write(soundData, 0, BUFFER_SIZE);
 					}
-					sourceDataLine.write(soundData, 0, BUFFER_SIZE);
 				}
 				sourceDataLine.close();
 			}
