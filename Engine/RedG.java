@@ -77,7 +77,7 @@ public class RedG {
 				collided = ((RedTilemap) Basic1).collide((RedObject) Basic2);
 			} else if (Basic2 instanceof RedTilemap) {
 				collided = ((RedTilemap) Basic2).collide((RedObject) Basic1);
-			} else {
+			} else if(Basic1 instanceof RedObject && Basic2 instanceof RedObject){
 				boolean separatedX = separateX((RedObject) Basic1, (RedObject) Basic2);
 				boolean separatedY = separateY((RedObject) Basic1, (RedObject) Basic2);
 				collided = separatedX || separatedY;
