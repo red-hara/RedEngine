@@ -7,7 +7,6 @@
 package Engine;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -19,7 +18,7 @@ public class RedSave {
 
 	public FileOutputStream saveFile;
 
-	public RedSave(String FilePath) throws FileNotFoundException, IOException {
+	public RedSave(String FilePath) throws IOException {
 		new File(FilePath.substring(0, FilePath.lastIndexOf('/'))).mkdir();
 
 		saveFile = new FileOutputStream(FilePath);

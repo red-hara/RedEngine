@@ -46,7 +46,7 @@ public class RedG {
 	 * Reference to <code>RedMouse</code>.
 	 */
 	public static RedMouse mouse = new RedMouse();
-	
+
 	public static Font fontPixie;
 
 	/**
@@ -63,22 +63,25 @@ public class RedG {
 	public static boolean collide(RedBasic Basic1, RedBasic Basic2) {
 		boolean collided = false;
 
-		if (Basic1 instanceof RedGroup) {
-			RedGroup group;
-			group = (RedGroup) Basic1;
-			for (RedBasic member : group.members) {
-				collided = collide(member, Basic2) || collided;
+		if (Basic1 != null && Basic2 != null) {
+
+			if (Basic1 instanceof RedGroup) {
+				RedGroup group;
+				group = (RedGroup) Basic1;
+				for (RedBasic member : group.members) {
+					collided = collide(member, Basic2) || collided;
+				}
+			} else if (Basic2 instanceof RedGroup) {
+				collided = collide(Basic2, Basic1);
+			} else if (Basic1 instanceof RedTilemap) {
+				collided = ((RedTilemap) Basic1).collide((RedObject) Basic2);
+			} else if (Basic2 instanceof RedTilemap) {
+				collided = ((RedTilemap) Basic2).collide((RedObject) Basic1);
+			} else if(Basic1 instanceof RedObject && Basic2 instanceof RedObject){
+				boolean separatedX = separateX((RedObject) Basic1, (RedObject) Basic2);
+				boolean separatedY = separateY((RedObject) Basic1, (RedObject) Basic2);
+				collided = separatedX || separatedY;
 			}
-		} else if (Basic2 instanceof RedGroup) {
-			collided = collide(Basic2, Basic1);
-		} else if (Basic1 instanceof RedTilemap) {
-			collided = ((RedTilemap) Basic1).collide((RedObject) Basic2);
-		} else if (Basic2 instanceof RedTilemap) {
-			collided = ((RedTilemap) Basic2).collide((RedObject) Basic1);
-		} else {
-			boolean separatedX = separateX((RedObject) Basic1, (RedObject) Basic2);
-			boolean separatedY = separateY((RedObject) Basic1, (RedObject) Basic2);
-			collided = separatedX || separatedY;
 		}
 		return collided;
 	}
@@ -96,7 +99,7 @@ public class RedG {
 		} else if (Basic1 instanceof RedGroup) {
 			RedGroup group;
 			group = (RedGroup) Basic1;
-			for (RedBasic member : group.members ) {
+			for (RedBasic member : group.members) {
 				if (overlap(Basic2, member)) {
 					overlapFound = true;
 				}
@@ -304,7 +307,7 @@ public class RedG {
 					RedGame.getWindow().getTitle(),
 					true,
 					RedGame.getWindow().getBackground().getRGB() + 0x1000000 * RedGame.getWindow().getBackground().getAlpha(),
-					RedGame.getWindow().displyasZoom);
+					RedGame.getWindow().displayZoom);
 		}
 		RedGame.getWindow().requestFocus();
 	}
