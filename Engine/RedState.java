@@ -6,7 +6,6 @@
  */
 package Engine;
 
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsEnvironment;
@@ -60,7 +59,6 @@ public class RedState extends RedGroup {
 	}
 
 	public void drawState(RedCanvas Canvas) {
-		Graphics graphics = stateCanvas.getGraphics();
 		
 		double sin = Math.abs(Math.sin(angle)), cos = Math.abs(Math.cos(angle));
 		int w = stateCanvas.getWidth();

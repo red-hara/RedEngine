@@ -146,8 +146,8 @@ public class RedTilemap extends RedObject {
 			finish.y = data[0].length;
 		}
 
-		for (int Y = (int) start.y; Y < finish.y; Y++) {
-			for (int X = (int) start.x; X < finish.x; X++) {
+		for (int Y = (int) start.y; Y < (int) finish.y; Y++) {
+			for (int X = (int) start.x; X < (int) finish.x; X++) {
 				virtualTile.x = X * tileWidth + x;
 				virtualTile.y = Y * tileHeight + y;
 				virtualTile.last.x = X * tileWidth + last.x;
