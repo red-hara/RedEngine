@@ -7,8 +7,10 @@
 package Engine;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
+import java.awt.image.DataBufferInt;
 import java.awt.image.WritableRaster;
 import java.io.IOException;
 import java.util.Hashtable;
@@ -22,11 +24,13 @@ public class RedImage extends BufferedImage {
 
 	public int width = 0;
 	public int height = 0;
+	private Graphics _graphics;
 
 	public RedImage(int Width, int Height, int ImageType) {
 		super(Width, Height, ImageType);
 		width = Width;
 		height = Height;
+		_graphics = super.getGraphics();
 	}
 
 	public RedImage(BufferedImage Source) {
@@ -34,10 +38,12 @@ public class RedImage extends BufferedImage {
 		width = Source.getWidth();
 		height = Source.getHeight();
 		setData(Source.getData());
+		_graphics = super.getGraphics();
 	}
 	
    public RedImage(ColorModel cm, WritableRaster wr, boolean bln, Hashtable<?, ?> hshtbl) {
         super(cm, wr, bln, hshtbl);
+		_graphics = super.getGraphics();
     }
 
 	public static RedImage loadImage(String ImagePath) {
@@ -73,11 +79,27 @@ public class RedImage extends BufferedImage {
 	}
 
 	public void fillRect(int BeginX, int BeginY, int Width, int Height, int Color) {
-		for (int X = Math.max(BeginX, 0); X < Math.min(BeginX + Width, width); X++) {
-			for (int Y = Math.max(BeginY, 0); Y < Math.min(BeginY + Height, height); Y++) {
-				setRGB(X, Y, Color);
+//		WritableRaster raster = getRaster();
+//		int[] rasterPixels = null;
+//		rasterPixels = raster.getPixels(BeginX, BeginY, Width, Height, rasterPixels);
+//		for (int i = 0; i < rasterPixels.length; i++) {
+//			rasterPixels[i] = Color;
+//		}
+//		raster.setPixels(BeginX, BeginY, Width, Height, rasterPixels);
+//		setData(raster);
+		
+		int[] pixels = ((DataBufferInt) getRaster().getDataBuffer()).getData();
+		for (int X = BeginX; X < BeginX + Width; X++) {
+			for (int Y = BeginY; Y < BeginY + Height; Y++) {
+				pixels[X + Y * width] = Color;
 			}
 		}
+		
+//		for (int X = Math.max(BeginX, 0); X < Math.min(BeginX + Width, width); X++) {
+//			for (int Y = Math.max(BeginY, 0); Y < Math.min(BeginY + Height, height); Y++) {
+//				setRGB(X, Y, Color);
+//			}
+//		}
 	}
 
 	public void noiseRGB(int BeginX, int BeginY, int FinishX, int FinishY, int Red, int Green, int Blue, double Seed) {
@@ -194,5 +216,10 @@ public class RedImage extends BufferedImage {
 				setRGB(X, Y, Colors[(int) Math.abs(Colors.length * RedG.random())]);
 			}
 		}
+	}
+	
+	@Override
+	public Graphics getGraphics() {
+		return _graphics;
 	}
 }
