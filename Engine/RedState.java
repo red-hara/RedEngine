@@ -47,11 +47,7 @@ public class RedState extends RedGroup {
 	}
 
 	public void drawBg() {
-//		Graphics graphics = stateCanvas.getGraphics();
-//		graphics.setColor(new Color(bgColor, true));
-//		graphics.fillRect(0, 0, (int) (stateCanvas.width), (int) (stateCanvas.height));
 		stateCanvas.fillRect(0, 0, stateCanvas.width, stateCanvas.height, bgColor);
-
 	}
 
 	public void drawOnCanvas() {

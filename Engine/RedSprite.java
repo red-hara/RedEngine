@@ -92,7 +92,7 @@ public class RedSprite extends RedObject {
 						.getDefaultConfiguration();
 
 				BufferedImage result = gc.createCompatibleImage(newW, newH, Transparency.TRANSLUCENT);
-				Graphics2D g = result.createGraphics();
+				Graphics2D g = (Graphics2D) result.getGraphics();
 				g.translate((newW - w) / 2, (newH - h) / 2);
 				g.rotate(angle, w / 2, h / 2);
 				g.drawRenderedImage(finalFrame, null);

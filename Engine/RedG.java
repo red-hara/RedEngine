@@ -87,10 +87,11 @@ public class RedG {
 	}
 
 	/**
-	 *
+	 * Check if two <code>RedBasic</code> overlap.
+	 * 
 	 * @param Basic1 First basic (<code>RedBasic</code>, <code>RedGroup</code> and etc.).
 	 * @param Basic2 Second basic (<code>RedBasic</code>, <code>RedGroup</code> and etc.).
-	 * @return if they overlaps anywhere.
+	 * @return True if they overlaps anywhere.
 	 */
 	public static boolean overlap(RedBasic Basic1, RedBasic Basic2) {
 		boolean overlapFound = false;
