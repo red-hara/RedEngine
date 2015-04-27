@@ -33,6 +33,7 @@ public class RedBone extends RedObject {
 				Y,
 				Length * Math.cos(OffsetAngle),
 				Length * Math.sin(OffsetAngle));
+		length = Length;
 		offsetAngle = OffsetAngle;
 		angle = offsetAngle;
 	}
@@ -47,7 +48,7 @@ public class RedBone extends RedObject {
 		} else {
 			angle = offsetAngle;
 		}
-		width = length * Math.cos(angle);
-		height = length * Math.sin(angle);
+		width = length * Math.sin(angle);
+		height = length * Math.cos(angle);
 	}
 }
