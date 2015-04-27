@@ -13,6 +13,8 @@ import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsEnvironment;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Class extends <code>RedObject</code>. Has image and animation.
@@ -24,8 +26,8 @@ public class RedSprite extends RedObject {
 	public RedImage finalFrame;
 	public RedImage currentFrame;
 	public RedImage frames;
-	public int[][] animations;
-	public int animationCurrent;
+	public Map<String, int[]> animations;
+	public String animationCurrent;
 	public int animationFrame;
 	public int frameWidth;
 	public int frameHeight;
@@ -41,8 +43,8 @@ public class RedSprite extends RedObject {
 	public RedMethod animationMethod = new RedMethod() {
 		@Override
 		public void execute() {
-			currentFrame = frames.getSubImage(frameWidth * animations[animationCurrent][animationFrame], 0, frameWidth, frameHeight);
-			animationFrame = (animationFrame < animations[animationCurrent].length - 1) ? animationFrame + 1 : 0;
+			currentFrame = frames.getSubImage(frameWidth * animations.get(animationCurrent)[animationFrame], 0, frameWidth, frameHeight);
+			animationFrame = (animationFrame < animations.get(animationCurrent).length - 1) ? animationFrame + 1 : 0;
 			dirty = true;
 		}
 	};
@@ -51,7 +53,7 @@ public class RedSprite extends RedObject {
 	public RedSprite(double X, double Y, double Width, double Height) {
 		super(X, Y, Width, Height);
 		currentFrame = new RedImage((int) Math.max(Width, 1), (int) Math.max(Height, 1), RedImage.TYPE_INT_ARGB);
-		animations = new int[1][1];
+		animations = new HashMap<>();
 		offset = new RedPoint(0, 0);
 		scrollFactor = new RedPoint(1, 1);
 		canvasDelta = new RedPoint(0, 0);
@@ -136,20 +138,15 @@ public class RedSprite extends RedObject {
 		updateFrame();
 	}
 
-	public void addAnimation(int[] AnimationCode, int AnimationNumber) {
-		if (AnimationNumber >= animations.length) {
-			int[][] oldAnimations;
-			oldAnimations = animations;
-			animations = new int[AnimationNumber + 2][1];
-			System.arraycopy(oldAnimations, 0, animations, 0, oldAnimations.length);
-		}
-		animations[AnimationNumber] = AnimationCode;
+	public void addAnimation(int[] AnimationCode, String AnimationName) {
+		
+		animations.put(AnimationName, AnimationCode);
 	}
 
-	public void playAnimation(int AnimationNumber, double Delay) {
-		if (AnimationNumber != animationCurrent) {
+	public void playAnimation(String AnimationName, double Delay) {
+		if (AnimationName != animationCurrent) {
 			animationFrame = 0;
-			animationCurrent = AnimationNumber;
+			animationCurrent = AnimationName;
 			animationTimer.method.execute();
 			dirty = true;
 		}

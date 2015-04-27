@@ -59,8 +59,8 @@ public class EngineSplash extends RedGroup {
 
 		engineName.loadImage(RedImage.loadImage("/Engine/system/data/EngineName.png"), 72, 52);
 		engineSymbol.loadImage(RedImage.loadImage("/Engine/system/data/EngineSymbol.png"), 40, 35);
-		engineSymbol.addAnimation(new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}, 0);
-		engineSymbol.playAnimation(0, 0.1);
+		engineSymbol.addAnimation(new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}, "");
+		engineSymbol.playAnimation("", 0.1);
 		add(engineSymbol);
 		add(engineName);
 		if (256 / RedGame.width > 128 / RedGame.height) {
