@@ -10,7 +10,8 @@ package Engine;
  *
  * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
-public class RedBone extends RedObject{
+public class RedBone extends RedObject {
+
 	public RedBone parent;
 	public double length;
 	public double offsetAngle;
@@ -23,17 +24,29 @@ public class RedBone extends RedObject{
 		parent = Parent;
 		length = Length;
 		offsetAngle = OffsetAngle;
-		
+
 		angle = parent.angle + offsetAngle;
 	}
 	
+	public RedBone(double X, double Y, double Length, double OffsetAngle) {
+		super(X,
+				Y,
+				Length * Math.cos(OffsetAngle),
+				Length * Math.sin(OffsetAngle));
+		offsetAngle = OffsetAngle;
+		angle = offsetAngle;
+	}
+
 	@Override
-	public void update()
-	{
+	public void update() {
 		super.update();
-		x = parent.x + parent.height;
-		y = parent.y + parent.width;
-		angle = parent.angle + offsetAngle;
+		if (parent != null) {
+			x = parent.x + parent.height;
+			y = parent.y + parent.width;
+			angle = parent.angle + offsetAngle;
+		} else {
+			angle = offsetAngle;
+		}
 		width = length * Math.cos(angle);
 		height = length * Math.sin(angle);
 	}
