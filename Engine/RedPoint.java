@@ -41,4 +41,9 @@ public class RedPoint {
 	public RedPoint getCopy() {
 		return new RedPoint(x, y);
 	}
+
+	public void set(double X, double Y) {
+		x = X;
+		y = Y;
+	}
 }
