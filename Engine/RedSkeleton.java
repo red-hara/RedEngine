@@ -21,6 +21,7 @@ public class RedSkeleton extends RedGroup {
 	public String animationCurrent;
 	public int animationFrame;
 	public RedGroup flesh;
+	public int[] drawOrder;
 
 	public RedMethod animationMethod = new RedMethod() {
 		@Override
@@ -101,6 +102,12 @@ public class RedSkeleton extends RedGroup {
 	@Override
 	public void draw(RedCanvas Canvas) {
 		super.draw(Canvas);
-		flesh.draw(Canvas);
+		if (drawOrder == null) {
+			flesh.draw(Canvas);
+		} else {
+			for (int i : drawOrder) {
+				flesh.members.get(i).draw(Canvas);
+			}
+		}
 	}
 }
