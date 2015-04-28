@@ -74,8 +74,8 @@ public class RedSprite extends RedObject {
 				updateFrame();
 			}
 			double sin = Math.abs(Math.sin(angle)), cos = Math.abs(Math.cos(angle));
-			int w = (int) (finalFrame.width + 2 * Math.abs(origin.x + finalFrame.width / 2));
-			int h = (int) (finalFrame.height + 2 * Math.abs(origin.y + finalFrame.height / 2));
+			int w = (int) (finalFrame.width - 2 * (origin.x - finalFrame.width / 2));
+			int h = (int) (finalFrame.height - 2 * (origin.y - finalFrame.height / 2));
 			int newW = (int) Math.floor(w * cos + h * sin);
 			int newH = (int) Math.floor(h * cos + w * sin);
 
