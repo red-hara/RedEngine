@@ -79,8 +79,8 @@ public class RedSprite extends RedObject {
 			int newW = (int) Math.floor(w * cos + h * sin);
 			int newH = (int) Math.floor(h * cos + w * sin);
 
-			RedPoint leftUpperCorner = new RedPoint((int) (Math.floor((x - RedG.screen.x * scrollFactor.x + offset.x + Canvas.offset.x + canvasDelta.x - (newW - w) / 2)) * ((zoom == 0) ? Canvas.zoom : zoom)),
-					(int) (Math.floor((y - RedG.screen.y * scrollFactor.y + offset.y + Canvas.offset.y + canvasDelta.y - (newH - h) / 2)) * ((zoom == 0) ? Canvas.zoom : zoom)));
+			RedPoint leftUpperCorner = new RedPoint((int) (Math.floor((x - RedG.screen.x * scrollFactor.x + offset.x + Canvas.offset.x + canvasDelta.x - (newW - w) / 2) - w / 2 + origin.x) * ((zoom == 0) ? Canvas.zoom : zoom)),
+					(int) (Math.floor((y - RedG.screen.y * scrollFactor.y + offset.y + Canvas.offset.y + canvasDelta.y - (newH - h) / 2) - h / 2 + origin.y) * ((zoom == 0) ? Canvas.zoom : zoom)));
 			RedPoint size = new RedPoint((int) (Math.floor(newW * ((zoom == 0) ? Canvas.zoom : zoom))),
 					(int) (Math.floor(newH * ((zoom == 0) ? Canvas.zoom : zoom))));
 
