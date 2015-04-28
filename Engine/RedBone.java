@@ -13,6 +13,7 @@ package Engine;
 public class RedBone extends RedObject {
 
 	public RedBone parent;
+	public RedPoint end;
 	public double length;
 	public double offsetAngle;
 
@@ -24,8 +25,9 @@ public class RedBone extends RedObject {
 		parent = Parent;
 		length = Length;
 		offsetAngle = OffsetAngle;
-
 		angle = parent.angle + offsetAngle;
+		
+		end = new RedPoint(x + length * Math.cos(angle), y + length * Math.sin(angle));
 	}
 	
 	public RedBone(double X, double Y, double Length, double OffsetAngle) {
@@ -36,19 +38,20 @@ public class RedBone extends RedObject {
 		length = Length;
 		offsetAngle = OffsetAngle;
 		angle = offsetAngle;
+		
+		end = new RedPoint(x + length * Math.cos(angle), y + length * Math.sin(angle));
 	}
 
 	@Override
 	public void update() {
 		super.update();
 		if (parent != null) {
-			x = parent.x + parent.height;
-			y = parent.y + parent.width;
+			x = parent.end.x;
+			y = parent.end.y;
 			angle = parent.angle + offsetAngle;
 		} else {
 			angle = offsetAngle;
 		}
-		width = length * Math.sin(angle);
-		height = length * Math.cos(angle);
+		end.set(x + length * Math.cos(angle), y + length * Math.sin(angle));
 	}
 }
