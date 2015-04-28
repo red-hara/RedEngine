@@ -69,24 +69,26 @@ public class RedSkeleton extends RedGroup {
 		super.update();
 		animationTimer.update();
 
-		double t = 1 - animationTimer.getTimeLeft() / animationTimer.time;
-		RedBone bone;
-		double[][] a = angles.get(animationCurrent);
-		double[][] l = lengths.get(animationCurrent);
-		double startAngle;
-		double deltaAngle;
-		double startLength;
-		double deltaLength;
-		int prev = (animationFrame + angles.get(animationCurrent).length - 1) % angles.get(animationCurrent).length;
-		for (int i = 0; i < members.size(); i++) {
-			bone = (RedBone) members.get(i);
-			if (a[animationFrame].length > 0) {
-				startAngle = a[prev][i];
-				deltaAngle = a[animationFrame][i] - startAngle;
-				bone.offsetAngle = startAngle + deltaAngle * t;
-			}
-			if (l[animationFrame].length > 0) {
-				bone.length = l[animationFrame][i];
+		if (animationCurrent != null) {
+			double t = 1 - animationTimer.getTimeLeft() / animationTimer.time;
+			RedBone bone;
+			double[][] a = angles.get(animationCurrent);
+			double[][] l = lengths.get(animationCurrent);
+			double startAngle;
+			double deltaAngle;
+			double startLength;
+			double deltaLength;
+			int prev = (animationFrame + angles.get(animationCurrent).length - 1) % angles.get(animationCurrent).length;
+			for (int i = 0; i < members.size(); i++) {
+				bone = (RedBone) members.get(i);
+				if (a[animationFrame].length > 0) {
+					startAngle = a[prev][i];
+					deltaAngle = a[animationFrame][i] - startAngle;
+					bone.offsetAngle = startAngle + deltaAngle * t;
+				}
+				if (l[animationFrame].length > 0) {
+					bone.length = l[animationFrame][i];
+				}
 			}
 		}
 
