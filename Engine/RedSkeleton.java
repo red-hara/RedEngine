@@ -20,7 +20,6 @@ public class RedSkeleton extends RedGroup {
 	public Map<String, double[]> delays;
 	public String animationCurrent;
 	public int animationFrame;
-	public RedGroup flesh;
 	public int[] drawOrder;
 
 	public RedMethod animationMethod = new RedMethod() {
@@ -52,7 +51,6 @@ public class RedSkeleton extends RedGroup {
 		angles = new HashMap<>();
 		lengths = new HashMap<>();
 		delays = new HashMap<>();
-		flesh = new RedGroup();
 	}
 
 	public void addAnimation(double[][] Angles, double[][] Lengths, double[] Delays, String AnimationName) {
@@ -70,7 +68,6 @@ public class RedSkeleton extends RedGroup {
 	@Override
 	public void update() {
 		super.update();
-		flesh.update();
 		animationTimer.update();
 
 		if (animationCurrent != null) {
@@ -101,12 +98,11 @@ public class RedSkeleton extends RedGroup {
 
 	@Override
 	public void draw(RedCanvas Canvas) {
-		super.draw(Canvas);
 		if (drawOrder == null) {
-			flesh.draw(Canvas);
+			super.draw(Canvas);
 		} else {
 			for (int i : drawOrder) {
-				flesh.members.get(i).draw(Canvas);
+				members.get(i).draw(Canvas);
 			}
 		}
 	}

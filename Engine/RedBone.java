@@ -10,7 +10,7 @@ package Engine;
  *
  * @author Red Hara (rtc6fg4.fejg2@gmail.com)
  */
-public class RedBone extends RedObject {
+public class RedBone extends RedSprite {
 
 	public RedBone parent;
 	public RedPoint end;
