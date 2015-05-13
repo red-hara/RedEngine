@@ -58,6 +58,7 @@ public class RedSprite extends RedObject {
 		offset = new RedPoint(0, 0);
 		scrollFactor = new RedPoint(1, 1);
 		canvasDelta = new RedPoint(0, 0);
+		origin = new RedPoint(Width / 2, Height / 2);
 		dirty = true;
 	}
 
