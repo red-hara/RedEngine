@@ -47,6 +47,7 @@ public class RedWindow extends JFrame {
 
         @Override
         protected void paintComponent(Graphics windowGraphics) {
+			canvas.fillRect(0, 0, canvas.width, canvas.height, 0x0);
             if (canvas != null && RedGame.state != null) {
                 RedGame.state.draw(canvas);
             }
