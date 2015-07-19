@@ -17,6 +17,7 @@ import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
 /**
@@ -38,6 +39,7 @@ public class RedWindow extends JFrame {
 	public double displayZoom;
 	public RedCanvas canvas;
 	public boolean resizableCanvas = true;
+	public BufferStrategy bufferStrategy;
 
 	public RedWindow(int Width, int Height, double Zoom, String Title, boolean Decorated, int WindowColor, double DisplayZoom) {
 		setUndecorated(!Decorated);
@@ -73,6 +75,9 @@ public class RedWindow extends JFrame {
 		addMouseListener(RedG.mouse);
 
 		setBackground(new Color(WindowColor, true));
+		
+		createBufferStrategy(2);
+		bufferStrategy = getBufferStrategy();
 	}
 
 	@Override
@@ -82,7 +87,7 @@ public class RedWindow extends JFrame {
 			RedGame.state.draw(canvas);
 		}
 
-		Graphics2D g2d = (Graphics2D) getGraphics();
+		Graphics2D g2d = (Graphics2D) bufferStrategy.getDrawGraphics();
 		g2d.clearRect(0, 0, getContentPane().getWidth(), getContentPane().getHeight());
 		g2d.setComposite(AlphaComposite.Src);
 
@@ -119,5 +124,7 @@ public class RedWindow extends JFrame {
 			}
 		}
 		g2d.dispose();
+		
+		bufferStrategy.show();
 	}
 }
