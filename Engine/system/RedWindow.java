@@ -92,12 +92,12 @@ public class RedWindow extends JFrame {
 		g2d.setComposite(AlphaComposite.Src);
 
 		if (RedGame.scaleType == RedGame.NOSCALE) {
-			g2d.drawImage(canvas, 0, 0, null);
+			g2d.drawImage(canvas, getInsets().top, getInsets().left, null);
 		}
 		if (RedGame.scaleType == RedGame.FILL) {
 			g2d.drawImage(canvas,
-					0,
-					0,
+					getInsets().top,
+					getInsets().left,
 					getWidth(),
 					getHeight(),
 					null);
@@ -108,16 +108,16 @@ public class RedWindow extends JFrame {
 			if (propX <= propY) {
 				g2d.drawImage(
 						canvas,
-						0,
-						(getContentPane().getHeight()) / 2 - (int) (canvas.height * propX) / 2,
+						getInsets().left,
+						(getContentPane().getHeight()) / 2 - (int) (canvas.height * propX) / 2 + getInsets().top,
 						getContentPane().getWidth(),
 						(int) (canvas.height * propX),
 						null);
 			} else {
 				g2d.drawImage(
 						canvas,
-						(getContentPane().getWidth()) / 2 - (int) (canvas.width * propY) / 2,
-						0,
+						(getContentPane().getWidth()) / 2 - (int) (canvas.width * propY) / 2 + getInsets().top,
+						getInsets().top,
 						(int) (canvas.width * propY),
 						getContentPane().getHeight(),
 						null);
