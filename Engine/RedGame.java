@@ -101,7 +101,7 @@ public class RedGame {
 				windowGraphics.setColor(new Color(RedG.bgColor, true));
 				windowGraphics.fillRect(0, 0, window.canvas.width, window.canvas.height);
 
-				window.panel.repaint();
+				window.repaint();
 
 			}
 		}
@@ -120,9 +120,6 @@ public class RedGame {
 	 * State to be updated and drawn.
 	 */
 	public static RedGroup state;
-	/**
-	 * Main mainWindow of game.
-	 */
 	public static final int NOSCALE = 0;
 	public static final int FILL = 1;
 	public static final int PROPOTION = 2;
@@ -143,7 +140,7 @@ public class RedGame {
 		height = Height;
 
 		state = InitialState;
-		
+
 		try {
 			RedG.fontPixie = Font.createFont(Font.PLAIN, RedText.class.getResourceAsStream("/Engine/system/data/pixie.ttf"));
 		} catch (FontFormatException | IOException ex) {
@@ -211,6 +208,6 @@ public class RedGame {
 		oldWindow = _windowList;
 		_windowList = new RedWindow[_windowList.length + 1];
 		System.arraycopy(oldWindow, 0, _windowList, 0, oldWindow.length);
-		_windowList[ _windowList.length - 1] = Window;
+		_windowList[_windowList.length - 1] = Window;
 	}
 }

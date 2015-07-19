@@ -78,28 +78,13 @@ public class RedImage extends BufferedImage {
 		return copy;
 	}
 
-	public void fillRect(int BeginX, int BeginY, int Width, int Height, int Color) {
-//		WritableRaster raster = getRaster();
-//		int[] rasterPixels = null;
-//		rasterPixels = raster.getPixels(BeginX, BeginY, Width, Height, rasterPixels);
-//		for (int i = 0; i < rasterPixels.length; i++) {
-//			rasterPixels[i] = Color;
-//		}
-//		raster.setPixels(BeginX, BeginY, Width, Height, rasterPixels);
-//		setData(raster);
-		
+	public void fillRect(int BeginX, int BeginY, int Width, int Height, int Color) {	
 		int[] pixels = ((DataBufferInt) getRaster().getDataBuffer()).getData();
 		for (int X = BeginX; X < BeginX + Width; X++) {
 			for (int Y = BeginY; Y < BeginY + Height; Y++) {
 				pixels[X + Y * width] = Color;
 			}
 		}
-		
-//		for (int X = Math.max(BeginX, 0); X < Math.min(BeginX + Width, width); X++) {
-//			for (int Y = Math.max(BeginY, 0); Y < Math.min(BeginY + Height, height); Y++) {
-//				setRGB(X, Y, Color);
-//			}
-//		}
 	}
 
 	public void noiseRGB(int BeginX, int BeginY, int FinishX, int FinishY, int Red, int Green, int Blue, double Seed) {
