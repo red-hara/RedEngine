@@ -92,7 +92,7 @@ public class RedWindow extends JFrame {
 		g2d.setComposite(AlphaComposite.Src);
 
 		if (RedGame.scaleType == RedGame.NOSCALE) {
-			g2d.drawImage(canvas, getInsets().top, getInsets().left, null);
+			g2d.drawImage(canvas, getInsets().left, getInsets().top, null);
 		}
 		if (RedGame.scaleType == RedGame.FILL) {
 			g2d.drawImage(canvas,
